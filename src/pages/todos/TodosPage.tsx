@@ -16,6 +16,12 @@ const FILTER_OPTIONS: { value: TodoFilter; label: string }[] = [
   { value: 'completed', label: 'Выполненные' },
 ]
 
+const EMPTY_TEXT: Record<TodoFilter, string> = {
+  all: 'Добавьте свою первую задачу',
+  active: 'Активных задач нет',
+  completed: 'Выполненных задач пока нет',
+}
+
 const STORAGE_KEY = 'todos'
 
 function loadTodos() {
@@ -93,7 +99,7 @@ export function TodosPage() {
           </div>
 
           {visibleTodos.length === 0 ? (
-            <PlugDefault title='Добавьте свою первую задачу' />
+            <PlugDefault title={EMPTY_TEXT[filter]} />
           ) : (
             <TodoList
               todos={visibleTodos}
