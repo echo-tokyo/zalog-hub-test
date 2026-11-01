@@ -1,23 +1,22 @@
 import styles from './SegmentedControl.module.css'
 
-type Option<T extends string> = {
+interface Option<T extends string> {
   value: T
   label: string
 }
 
-type SegmentedControlProps<T extends string> = {
+interface SegmentedControlProps<T extends string> {
   options: Option<T>[]
   value: T
   onChange: (value: T) => void
   label: string
 }
 
-export function SegmentedControl<T extends string>({
-  options,
-  value,
-  onChange,
-  label,
-}: SegmentedControlProps<T>) {
+export function SegmentedControl<T extends string>(
+  props: SegmentedControlProps<T>,
+) {
+  const { options, value, onChange, label } = props
+
   return (
     <div role='group' aria-label={label} className={styles.group}>
       {options.map((option) => (

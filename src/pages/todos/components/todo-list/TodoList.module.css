@@ -1,0 +1,5 @@
+.list {
+  composes: scrollbar from global;
+  flex: 1;
+  overflow-y: auto;
+}

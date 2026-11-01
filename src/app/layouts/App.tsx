@@ -1,5 +1,7 @@
+import { TodosPage } from '@/pages/todos/TodosPage'
+
 function App() {
-  return <p>Hello</p>
+  return <TodosPage />
 }
 
 export default App

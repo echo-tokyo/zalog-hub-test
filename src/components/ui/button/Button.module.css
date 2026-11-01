@@ -28,6 +28,11 @@
   }
 }
 
+.button:has(> svg:only-child) {
+  width: var(--control-height);
+  padding: 0;
+}
+
 .primary {
   background-color: var(--color-primary);
   color: var(--color-primary-contrast);

@@ -2,13 +2,15 @@ import type { ReactNode } from 'react'
 
 import styles from './Checkbox.module.css'
 
-type CheckboxProps = {
+interface CheckboxProps {
   checked: boolean
   onChange: (checked: boolean) => void
   children: ReactNode
 }
 
-export function Checkbox({ checked, onChange, children }: CheckboxProps) {
+export function Checkbox(props: CheckboxProps) {
+  const { checked, onChange, children } = props
+
   return (
     <label className={styles.label}>
       <input

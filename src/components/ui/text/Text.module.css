@@ -1,0 +1,61 @@
+.xs {
+  font-size: 0.75rem;
+}
+
+.s {
+  font-size: 0.875rem;
+}
+
+.m {
+  font-size: 1rem;
+}
+
+.l {
+  font-size: 1.125rem;
+}
+
+.xl {
+  font-size: 2.25rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.xxl {
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.default {
+  color: var(--color-text);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+@media (width <= 768px) {
+  .xl {
+    font-size: 1.75rem;
+  }
+
+  .xxl {
+    font-size: 2.25rem;
+  }
+}

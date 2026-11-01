@@ -2,18 +2,16 @@ import type { ComponentProps } from 'react'
 
 import styles from './Button.module.css'
 
-type ButtonProps = Omit<ComponentProps<'button'>, 'className'> & {
+interface ButtonProps extends Omit<ComponentProps<'button'>, 'className'> {
   variant?: 'primary' | 'ghost'
 }
 
-export function Button({
-  variant = 'primary',
-  type = 'button',
-  ...props
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const { variant = 'primary', type = 'button', ...rest } = props
+
   return (
     <button
-      {...props}
+      {...rest}
       type={type}
       className={`${styles.button} ${styles[variant]}`}
     />
