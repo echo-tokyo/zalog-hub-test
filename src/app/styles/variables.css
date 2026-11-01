@@ -1,0 +1,20 @@
+:root {
+  --color-bg: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-text: #1f2328;
+  --color-text-muted: #8a9099;
+  --color-border: #d9dce1;
+  --color-primary: #3b5bdb;
+  --color-primary-contrast: #ffffff;
+  --color-danger: #e03131;
+  --color-scrollbar: #c3c7ce;
+  --color-scrollbar-hover: #a3a8b1;
+
+  --font-family:
+    Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius: 8px;
+  --control-height: 40px;
+  --transition: 0.15s ease;
+  --focus-ring: 0 0 0 3px rgb(59 91 219 / 25%);
+}
