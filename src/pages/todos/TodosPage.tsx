@@ -16,6 +16,16 @@ const FILTER_OPTIONS: { value: TodoFilter; label: string }[] = [
   { value: 'completed', label: 'Выполненные' },
 ]
 
+const STORAGE_KEY = 'todos'
+
+function loadTodos() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]') as Todo[]
+  } catch {
+    return []
+  }
+}
+
 function matchesFilter(todo: Todo, filter: TodoFilter) {
   switch (filter) {
     case 'all':
@@ -28,32 +38,34 @@ function matchesFilter(todo: Todo, filter: TodoFilter) {
 }
 
 export function TodosPage() {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState(loadTodos)
   const [filter, setFilter] = useState<TodoFilter>('all')
 
   const visibleTodos = todos.filter((todo) => matchesFilter(todo, filter))
   const completedCount = todos.filter((todo) => todo.completed).length
 
+  function updateTodos(next: Todo[]) {
+    setTodos(next)
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+  }
+
   function handleAdd(text: string) {
-    setTodos((prev) => [
-      { id: crypto.randomUUID(), text, completed: false },
-      ...prev,
-    ])
+    updateTodos([{ id: crypto.randomUUID(), text, completed: false }, ...todos])
     if (filter === 'completed') {
       setFilter('all')
     }
   }
 
   function handleToggle(id: string) {
-    setTodos((prev) =>
-      prev.map((todo) =>
+    updateTodos(
+      todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo,
       ),
     )
   }
 
   function handleDelete(id: string) {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id))
+    updateTodos(todos.filter((todo) => todo.id !== id))
   }
 
   return (
